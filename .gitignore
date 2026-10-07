@@ -1,0 +1,10 @@
+# PowerNukkitX runtime
+*.log
+logs/
+worlds/
+crashdumps/
+cache/
+
+# Local files
+.DS_Store
+Thumbs.db
