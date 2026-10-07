@@ -1,0 +1,1 @@
+Папка server — файлы и данные PowerNukkitX 2.0.0 для FrostLand.
