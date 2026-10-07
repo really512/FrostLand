@@ -17,13 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-          cache: maven
-
       - name: Create Maven project
         run: |
           cat > pom.xml <<'EOF'
@@ -59,6 +52,15 @@ jobs:
             </build>
           </project>
           EOF
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+          cache-dependency-path: plugins/FrostScoreboard/pom.xml
+
       - name: Check server API
         run: |
           if [ ! -f ../../server/powernukkitx-2.0.0.jar ]; then
@@ -66,8 +68,10 @@ jobs:
             echo "The build is intentionally stopped until the real server JAR is added."
             exit 1
           fi
+
       - name: Build JAR
         run: mvn -B package
+
       - name: Upload plugin artifact
         uses: actions/upload-artifact@v4
         with:
