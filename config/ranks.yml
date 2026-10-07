@@ -1,14 +1,76 @@
-# FrostLand — заготовка системы рангов
+# FrostLand — система рангов
 ranks:
   player:
     display: "Игрок"
     purchasable: false
+    obtainable: "default"
+
   vip:
     display: "VIP"
-    purchasable: true
+    purchasable: false
+    obtainable: "video_or_moderator"
+
+  premium:
+    display: "Premium"
+    purchasable: false
+    obtainable: "video_or_moderator"
+
+  dragon:
+    display: "Dragon"
+    purchasable: false
+    obtainable: "video_or_moderator"
+
+  elite:
+    display: "Elite"
+    purchasable: false
+    obtainable: "rare_video_or_moderator"
+
+  legend:
+    display: "Legend"
+    purchasable: false
+    obtainable: "video_or_moderator"
+
+  helper:
+    display: "Helper"
+    purchasable: false
+    obtainable: "video_or_moderator"
+
+  d_helper:
+    display: "D.Helper"
+    purchasable: false
+    obtainable: "video_or_moderator"
+
   moderator:
     display: "Модератор"
     purchasable: false
+    obtainable: "moderator_or_higher"
+
+  senior_moderator:
+    display: "Старший модератор"
+    purchasable: false
+    obtainable: "moderator_or_higher"
+
   admin:
     display: "Админ"
     purchasable: false
+    obtainable: "moderator_or_higher"
+
+  senior_admin:
+    display: "Старший админ"
+    purchasable: false
+    obtainable: "moderator_or_higher"
+
+  developer:
+    display: "Разработчик"
+    purchasable: false
+    obtainable: "moderator_or_higher"
+
+  owner:
+    display: "Создатель"
+    purchasable: false
+    obtainable: "owner_only"
+
+  donation_god:
+    display: "Донат Бог"
+    purchasable: false
+    obtainable: "video_or_moderator"
