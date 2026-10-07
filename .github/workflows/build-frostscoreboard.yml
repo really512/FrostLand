@@ -92,6 +92,19 @@ jobs:
           cp -r config server-package/config
           find server-package -type f -print
 
+      - name: Test-start PowerNukkitX
+        working-directory: server-package
+        run: |
+          set +e
+          timeout --signal=TERM --kill-after=10s 45s java -jar powernukkitx-2.0.0.jar > server-test.log 2>&1
+          code=$?
+          cat server-test.log
+          if [ "$code" -ne 124 ] && [ "$code" -ne 143 ] && [ "$code" -ne 137 ]; then
+            echo "PowerNukkitX завершился неожиданно с кодом $code"
+            exit "$code"
+          fi
+          echo "PowerNukkitX успешно запускался в тестовом режиме до тайм-аута."
+
       - name: Upload plugin artifact
         uses: actions/upload-artifact@v4
         with:
