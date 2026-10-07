@@ -1,11 +1,10 @@
 package ru.frostland.scoreboard;
 
+import cn.nukkit.Player;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.scheduler.NukkitRunnable;
 import cn.nukkit.scoreboard.Scoreboard;
-import cn.nukkit.scoreboard.ScoreboardDisplaySlot;
-import cn.nukkit.scoreboard.ScoreboardLine;
-import cn.nukkit.Player;
+import cn.nukkit.scoreboard.data.DisplaySlot;
 
 public final class FrostScoreboard extends PluginBase {
 
@@ -24,11 +23,7 @@ public final class FrostScoreboard extends PluginBase {
     }
 
     private void update(Player player) {
-        Scoreboard board = new Scoreboard(
-                "frostland",
-                "§b§lFROSTLAND",
-                ScoreboardDisplaySlot.SIDEBAR
-        );
+        Scoreboard board = new Scoreboard("frostland-" + player.getName(), "§b§lFROSTLAND");
 
         String name = player.getName();
         String donation = "Игрок";
@@ -37,14 +32,14 @@ public final class FrostScoreboard extends PluginBase {
         int ping = player.getPing();
         int online = getServer().getOnlinePlayers().size();
 
-        board.setLine(7, new ScoreboardLine(7, "§7────────────"));
-        board.setLine(6, new ScoreboardLine(6, "§fНик: §b" + name));
-        board.setLine(5, new ScoreboardLine(5, "§fДонат: §6" + donation));
-        board.setLine(4, new ScoreboardLine(4, "§fДеньги: §e" + money));
-        board.setLine(3, new ScoreboardLine(3, "§fОнлайн: §a" + online));
-        board.setLine(2, new ScoreboardLine(2, "§fПинг: §a" + ping + " ms"));
-        board.setLine(1, new ScoreboardLine(1, "§fXYZ: §7" + coords));
+        board.addLine("§7────────────", 7);
+        board.addLine("§fНик: §b" + name, 6);
+        board.addLine("§fДонат: §6" + donation, 5);
+        board.addLine("§fДеньги: §e" + money, 4);
+        board.addLine("§fОнлайн: §a" + online, 3);
+        board.addLine("§fПинг: §a" + ping + " ms", 2);
+        board.addLine("§fXYZ: §7" + coords, 1);
 
-        player.setScoreboard(board);
+        board.addViewer(player, DisplaySlot.SIDEBAR);
     }
 }
