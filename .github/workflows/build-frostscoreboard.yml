@@ -61,13 +61,19 @@ jobs:
           cache: maven
           cache-dependency-path: plugins/FrostScoreboard/pom.xml
 
-      - name: Check server API
+      - name: Download official PowerNukkitX 2.0.0 API JAR
+        working-directory: .
         run: |
-          if [ ! -f ../../server/powernukkitx-2.0.0.jar ]; then
-            echo "PowerNukkitX 2.0.0 JAR is not present in the repository."
-            echo "The build is intentionally stopped until the real server JAR is added."
-            exit 1
-          fi
+          mkdir -p server
+          curl -fL --retry 3 --retry-delay 2             -o server/powernukkitx-2.0.0.jar             https://github.com/PowerNukkitX/PowerNukkitX/releases/download/2.0.0/powernukkitx.jar
+          test -s server/powernukkitx-2.0.0.jar
+
+      - name: Verify PowerNukkitX JAR
+        working-directory: .
+        run: |
+          test -s server/powernukkitx-2.0.0.jar
+          sha256sum server/powernukkitx-2.0.0.jar
+          jar tf server/powernukkitx-2.0.0.jar >/dev/null
 
       - name: Build JAR
         run: mvn -B package
