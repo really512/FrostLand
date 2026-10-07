@@ -17,42 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create Maven project
-        run: |
-          cat > pom.xml <<'EOF'
-          <project xmlns="http://maven.apache.org/POM/4.0.0"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-            <modelVersion>4.0.0</modelVersion>
-            <groupId>ru.frostland</groupId>
-            <artifactId>FrostScoreboard</artifactId>
-            <version>1.0.0</version>
-            <properties>
-              <maven.compiler.source>21</maven.compiler.source>
-              <maven.compiler.target>21</maven.compiler.target>
-              <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            </properties>
-            <dependencies>
-              <dependency>
-                <groupId>cn.powernukkitx</groupId>
-                <artifactId>powernukkitx</artifactId>
-                <version>2.0.0</version>
-                <scope>system</scope>
-                <systemPath>${project.basedir}/../../server/powernukkitx-2.0.0.jar</systemPath>
-              </dependency>
-            </dependencies>
-            <build>
-              <plugins>
-                <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-compiler-plugin</artifactId>
-                  <version>3.13.0</version>
-                </plugin>
-              </plugins>
-            </build>
-          </project>
-          EOF
-
       - name: Set up Java 21
         uses: actions/setup-java@v5
         with:
@@ -65,7 +29,7 @@ jobs:
         working-directory: .
         run: |
           mkdir -p server
-          curl -fL --retry 3 --retry-delay 2             -o server/powernukkitx-2.0.0.jar             https://github.com/PowerNukkitX/PowerNukkitX/releases/download/2.0.0/powernukkitx.jar
+          curl -fL --retry 3 --retry-delay 2 -o server/powernukkitx-2.0.0.jar https://github.com/PowerNukkitX/PowerNukkitX/releases/download/2.0.0/powernukkitx.jar
           test -s server/powernukkitx-2.0.0.jar
 
       - name: Verify PowerNukkitX JAR
