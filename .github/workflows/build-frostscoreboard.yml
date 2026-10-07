@@ -78,8 +78,28 @@ jobs:
       - name: Build JAR
         run: mvn -B package
 
+      - name: Prepare FrostLand server package
+        working-directory: .
+        run: |
+          mkdir -p server-package/plugins
+          cp server/powernukkitx-2.0.0.jar server-package/powernukkitx-2.0.0.jar
+          cp plugins/FrostScoreboard/target/FrostScoreboard-1.0.0.jar server-package/plugins/FrostScoreboard.jar
+          cp server/nukkit.yml server-package/nukkit.yml
+          cp server/server.properties server-package/server.properties
+          cp server/permissions.yml server-package/permissions.yml
+          cp server/whitelist.json server-package/whitelist.json
+          cp server/ops.json server-package/ops.json
+          cp -r config server-package/config
+          find server-package -type f -print
+
       - name: Upload plugin artifact
         uses: actions/upload-artifact@v4
         with:
           name: FrostScoreboard
           path: plugins/FrostScoreboard/target/FrostScoreboard-1.0.0.jar
+
+      - name: Upload FrostLand server package
+        uses: actions/upload-artifact@v4
+        with:
+          name: FrostLand-server-2.0.0
+          path: server-package/
