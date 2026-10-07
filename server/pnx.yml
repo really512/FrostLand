@@ -1,0 +1,5 @@
+# FrostLand — базовая конфигурация PowerNukkitX 2.0.0
+# Здесь будут храниться основные настройки PNX.
+version: 2.0.0
+server-name: FrostLand
+platform: Bedrock
