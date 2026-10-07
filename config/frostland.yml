@@ -1,0 +1,14 @@
+# FrostLand — основные настройки сервера
+server:
+  name: FrostLand
+  platform: Bedrock
+  powernukkitx: "2.0.0"
+  language: ru_RU
+
+network:
+  port: 19132
+  bind: 0.0.0.0
+
+gameplay:
+  whitelist: false
+  spawn-protection: 16

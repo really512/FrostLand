@@ -1,0 +1,5 @@
+# FrostLand — сообщения
+prefix: "§bFrostLand §7»"
+join: "§aИгрок {player} вошёл на сервер."
+quit: "§cИгрок {player} вышел с сервера."
+no-permission: "§cУ вас нет прав."

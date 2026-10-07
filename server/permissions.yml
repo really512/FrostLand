@@ -1,0 +1,10 @@
+# FrostLand — базовые группы прав
+groups:
+  player:
+    permissions: []
+  vip:
+    permissions: []
+  moderator:
+    permissions: []
+  admin:
+    permissions: []

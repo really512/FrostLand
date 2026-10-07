@@ -1,0 +1,14 @@
+# FrostLand — заготовка системы рангов
+ranks:
+  player:
+    display: "Игрок"
+    purchasable: false
+  vip:
+    display: "VIP"
+    purchasable: true
+  moderator:
+    display: "Модератор"
+    purchasable: false
+  admin:
+    display: "Админ"
+    purchasable: false
