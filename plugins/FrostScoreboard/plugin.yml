@@ -1,6 +1,0 @@
-name: FrostScoreboard
-main: ru.frostland.scoreboard.FrostScoreboard
-version: "1.0.0"
-api: ["2.0.0"]
-author: GingerXYT
-description: Боковая статистика FrostLand для PowerNukkitX 2.0.0.
