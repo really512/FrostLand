@@ -22,6 +22,10 @@ commands:
     description: Случайная телепортация
     usage: "/rtp"
     permission: frostteleport.rtp
+  spawn:
+    description: Телепортироваться на спавн
+    usage: "/spawn"
+    permission: frostteleport.spawn
   tpa:
     description: Запросить телепортацию к игроку
     usage: "/tpa <игрок>"
@@ -43,6 +47,8 @@ permissions:
   frostteleport.delhome:
     default: true
   frostteleport.rtp:
+    default: true
+  frostteleport.spawn:
     default: true
   frostteleport.tpa:
     default: true
