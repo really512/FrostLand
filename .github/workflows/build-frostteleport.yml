@@ -1,0 +1,48 @@
+name: Build FrostTeleport
+
+on:
+  push:
+    paths:
+      - "plugins/FrostTeleport/**"
+      - ".github/workflows/build-frostteleport.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: plugins/FrostTeleport
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+          cache-dependency-path: plugins/FrostTeleport/pom.xml
+
+      - name: Download PowerNukkitX 2.0.0
+        working-directory: .
+        run: |
+          mkdir -p server
+          curl -fL --retry 3 --retry-delay 2 -o server/powernukkitx-2.0.0.jar https://github.com/PowerNukkitX/PowerNukkitX/releases/download/2.0.0/powernukkitx.jar
+          test -s server/powernukkitx-2.0.0.jar
+
+      - name: Build JAR
+        run: mvn -B clean package
+
+      - name: Verify plugin JAR
+        run: |
+          test -s target/FrostTeleport-1.0.0.jar
+          jar tf target/FrostTeleport-1.0.0.jar | grep -Fx 'ru/frostland/teleport/FrostTeleport.class'
+          jar tf target/FrostTeleport-1.0.0.jar | grep -Fx 'plugin.yml'
+
+      - name: Upload plugin artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FrostTeleport
+          path: plugins/FrostTeleport/target/FrostTeleport-1.0.0.jar
