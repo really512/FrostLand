@@ -1,0 +1,52 @@
+name: FrostTeleport
+main: ru.frostland.teleport.FrostTeleport
+version: 1.0.0
+api: ["2.0.0"]
+author: GingerXYT
+description: Телепортации FrostLand: home, rtp, tpa и tp
+
+commands:
+  home:
+    description: Телепортироваться домой
+    usage: "/home [имя]"
+    permission: frostteleport.home
+  sethome:
+    description: Установить точку дома
+    usage: "/sethome [имя]"
+    permission: frostteleport.sethome
+  delhome:
+    description: Удалить точку дома
+    usage: "/delhome [имя]"
+    permission: frostteleport.delhome
+  rtp:
+    description: Случайная телепортация
+    usage: "/rtp"
+    permission: frostteleport.rtp
+  tpa:
+    description: Запросить телепортацию к игроку
+    usage: "/tpa <игрок>"
+    permission: frostteleport.tpa
+  tpaccept:
+    description: Принять запрос телепортации
+    usage: "/tpaccept"
+    permission: frostteleport.tpaccept
+  tp:
+    description: Телепортироваться к игроку
+    usage: "/tp <игрок>"
+    permission: frostteleport.tp
+
+permissions:
+  frostteleport.home:
+    default: true
+  frostteleport.sethome:
+    default: true
+  frostteleport.delhome:
+    default: true
+  frostteleport.rtp:
+    default: true
+  frostteleport.tpa:
+    default: true
+  frostteleport.tpaccept:
+    default: true
+  frostteleport.tp:
+    default: op
