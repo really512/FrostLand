@@ -4,6 +4,7 @@ server:
   platform: Bedrock
   powernukkitx: "2.0.0"
   language: ru_RU
+  address: "pe.frostland.fun"
 
 network:
   port: 19132
