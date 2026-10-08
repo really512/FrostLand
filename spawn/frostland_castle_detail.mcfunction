@@ -132,7 +132,7 @@ fill 15 68 16 18 76 24 dark_oak_planks
 fill -18 65 -18 -18 69 -18 spruce_log
 fill -20 67 -16 -16 67 -20 spruce_leaves
 fill 18 65 -18 18 69 -18 spruce_log
-fill 16 67  -16 20 67 -20 spruce_leaves
+fill 16 67 -20 20 67 -16 spruce_leaves
 fill -18 65 18 -18 69 18 spruce_log
 fill -20 67 16 -16 67 20 spruce_leaves
 fill 18 65 18 18 69 18 spruce_log
