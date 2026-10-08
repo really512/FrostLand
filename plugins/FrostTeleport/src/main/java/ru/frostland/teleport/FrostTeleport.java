@@ -60,6 +60,7 @@ public class FrostTeleport extends PluginBase {
             case "home" -> goHome(player, args);
             case "delhome" -> deleteHome(player, args);
             case "rtp" -> randomTeleport(player);
+            case "spawn" -> spawn(player);
             case "tpa" -> requestTeleport(player, args);
             case "tpaccept" -> acceptTeleport(player);
             case "tp" -> teleportToPlayer(player, args);
@@ -138,6 +139,18 @@ public class FrostTeleport extends PluginBase {
         homes.remove(key);
         homes.save();
         player.sendMessage("§aДом §e" + name + " §aудалён.");
+    }
+
+    private void spawn(Player player) {
+        Level spawnLevel = getServer().getDefaultLevel();
+        if (spawnLevel == null) {
+            player.sendMessage("§cОсновной мир сервера не найден.");
+            return;
+        }
+
+        Position spawn = spawnLevel.getSafeSpawn();
+        player.teleport(spawn);
+        player.sendMessage("§bSpawn §7» §aВы телепортированы на спавн.");
     }
 
     private void randomTeleport(Player player) {
